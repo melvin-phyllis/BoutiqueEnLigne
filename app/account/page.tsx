@@ -1,4 +1,12 @@
+"use client"
+
+import Footer from "@/components/Footer"
+import Loading from "@/components/Loading"
+import Navbar from "@/components/Navbar"
+import Loginmiddleware from "@/controllers/Loginmiddleware"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 import { FaRegCalendarAlt, FaRegHeart } from "react-icons/fa"
 import { MdPeopleAlt } from "react-icons/md"
 
@@ -9,8 +17,24 @@ const accountNav = [
     { id: "blockwishlist", icon: < FaRegHeart size={60} />, text: "My wishlists" }
 ]
 const page = () => {
+
+    const [loading, setLoading] = useState(true)
+
+    const route = useRouter()
+    const path = usePathname()
+
+    useEffect(() => {
+        Loginmiddleware(setLoading, route, path)
+    }, [])
+
+    if (loading) {
+        return <Loading />
+    }
     return (
-        <>
+        <> <header className="lg:mx-10  p-4">
+            <Navbar />
+        </header>
+
             <main>
                 <section className="nav">
                     <div className="w-full flex  p-3 mt-20 text-xl items-center flex-col md:flex-row justify-between bg-gray-300 px-3 lg:px-30">
@@ -36,6 +60,7 @@ const page = () => {
                     </div>
                 </section>
             </main>
+            <Footer />
         </>
     )
 }

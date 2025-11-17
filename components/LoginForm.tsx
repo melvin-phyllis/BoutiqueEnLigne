@@ -56,7 +56,7 @@ const LoginForm = () => {
                     </div>
 
                     <button type="submit" className="btn bg-amber-300 rounded mt-4 mx-auto">Connexion</button>
-                    <BtnGoogle />
+                    <BtnGoogle route ={route} />
                     <Link href={"/signup"} className="text-center hover:text-yellow-300 text-sm">Pas de compte ? Créez-en un</Link>
                 </fieldset>
             </form>

@@ -24,16 +24,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" data-theme="light">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="lg:mx-10  p-4">
-          <Navbar />
-        </header>
+
         {children}
-        <Footer />
+      
       </body>
     </html>
   );

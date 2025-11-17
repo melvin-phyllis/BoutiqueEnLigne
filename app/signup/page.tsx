@@ -1,11 +1,16 @@
 
 
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
 import { SignupForm } from "@/components/SignupForm"
 import Link from "next/link"
 
 export const page = () => {
     return (
         <>
+            <header className="lg:mx-10  p-4">
+                <Navbar />
+            </header>
             <main>
                 <section className="nav">
                     <div className="w-full flex  p-3 mt-2 text-xl items-center flex-col md:flex-row justify-between bg-gray-300 px-3 lg:px-30">
@@ -23,7 +28,7 @@ export const page = () => {
                     <SignupForm />
                 </section>
             </main>
-
+            <Footer />
         </>
     )
 }

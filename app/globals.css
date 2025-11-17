@@ -1,3 +1,100 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+@keyframes square-animation {
+ 0% {
+  transform: translate(0, 0);
+ }
+
+ 12.5% {
+  transform: translate(32px, 0);
+ }
+
+ 25% {
+  transform: translate(64px, 0);
+ }
+
+ 37.5% {
+  transform: translate(64px, 32px);
+ }
+
+ 50% {
+  transform: translate(32px, 32px);
+ }
+
+ 62.5% {
+  transform: translate(32px, 64px);
+ }
+
+ 75% {
+  transform: translate(0, 64px);
+ }
+
+ 87.5% {
+  transform: translate(0, 32px);
+ }
+
+ 100% {
+  transform: translate(0, 0);
+ }
+}
+
+.loader-overlay {
+ position: fixed;
+ inset: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: rgba(15, 23, 42, 0.85);
+ backdrop-filter: blur(2px);
+ z-index: 50;
+}
+
+.loader {
+ position: relative;
+ width: 96px;
+ height: 96px;
+ transform: rotate(45deg);
+}
+
+.loader-square {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 28px;
+ height: 28px;
+ margin: 2px;
+ border-radius: 0;
+ background: linear-gradient(135deg, #f97316, #facc15);
+ animation: square-animation 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.loader-square:nth-of-type(1) {
+ animation-delay: 0s;
+}
+
+.loader-square:nth-of-type(2) {
+ animation-delay: -0.64s;
+}
+
+.loader-square:nth-of-type(3) {
+ animation-delay: -1.28s;
+}
+
+.loader-square:nth-of-type(4) {
+ animation-delay: -1.92s;
+}
+
+.loader-square:nth-of-type(5) {
+ animation-delay: -2.56s;
+}
+
+.loader-square:nth-of-type(6) {
+ animation-delay: -3.2s;
+}
+
+.loader-square:nth-of-type(7) {
+ animation-delay: -3.84s;
+}

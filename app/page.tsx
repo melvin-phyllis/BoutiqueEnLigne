@@ -16,6 +16,9 @@ export default function Home() {
 
   return (
     <>
+      <header className="lg:mx-10  p-4">
+        <Navbar />
+      </header>
 
       <main className="space-y-20">
 
@@ -153,9 +156,9 @@ export default function Home() {
           <FeaturedReviews />
         </section>
 
-        
-      </main>
 
+      </main>
+      <Footer />
     </>
   );
 }
