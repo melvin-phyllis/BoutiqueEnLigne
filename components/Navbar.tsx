@@ -1,18 +1,28 @@
 
 "use client"
 
+import GetinfoUser from "@/controllers/GetinfoUser"
+import { forminputType } from "@/types"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FaRegHeart } from "react-icons/fa"
+import { FiShoppingBag } from "react-icons/fi"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { ImHistory } from "react-icons/im"
 import { IoSearchOutline } from "react-icons/io5"
 import { MdPeopleAlt } from "react-icons/md"
+import { RiLogoutCircleRFill, RiRoadMapLine } from "react-icons/ri"
 import { SlEarphonesAlt } from "react-icons/sl"
 import BtnNavbar from "./BtnNavbar"
-import { FiShoppingBag } from "react-icons/fi"
 
 const Navbar = () => {
-    const [input, setInput] = useState(false)
+    const [inputsearch, setInputsearch] = useState(false)
+
+    const [user, setUser] = useState<forminputType>()
+
+    useEffect(() => setUser(GetinfoUser), [])
+
+    console.log(user)
     return (
         <>
             <nav className="flex justify-between lg:justify-around items-center ">
@@ -21,7 +31,7 @@ const Navbar = () => {
                     <BtnNavbar />
                     <img src="logo-1754382729.svg" alt="logo" className="w-30 lg:w-50" />
                 </div>
-                <div className={`fixed inset-0 bg-black opacity-30 z-40 ${!input && "hidden"}`} onClick={() => setInput(false)} />
+                <div className={`fixed inset-0 bg-black opacity-30 z-40 ${!inputsearch && "hidden"}`} onClick={() => setInputsearch(false)} />
                 <div className="relative  hidden lg:flex rounded-t-xl z-50 bg-white p-2">
 
                     <div className="flex items-center border w-full h-full justify-center rounded-2xl bg-gray-100">
@@ -32,7 +42,7 @@ const Navbar = () => {
                         <input
                             type="search"
                             placeholder="recherche votre produit..."
-                            onFocus={() => setInput(true)}
+                            onFocus={() => setInputsearch(true)}
                             className="w-full placeholder-gray-300 placeholder:font-semibold outline-none"
                         />
                         <button className="bg-amber-400 p-2 rounded-full">
@@ -40,7 +50,7 @@ const Navbar = () => {
                         </button>
                     </div>
 
-                    {input && (<>
+                    {inputsearch && (<>
 
                         <div className="absolute top-full left-0 right-0  bg-white text-black  rounded-b-lg  z-50 p-4">
                             <span>Aucun produit trouvé</span>
@@ -58,12 +68,21 @@ const Navbar = () => {
                 </div>
                 <div className="flex gap-2">
                     <IoSearchOutline size={30} className="lg:hidden flex" />
-                    <Link href={"/login"}><MdPeopleAlt className="text-3xl hover:text-yellow-400" /></Link>
+                    {user ? (<>
+                        <div className="dropdown dropdown-end ">
+                            <div tabIndex={0} role="button" className=" cursor-pointer"><MdPeopleAlt className="text-3xl hover:text-yellow-400" /></div>
+                            <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-40  p-2 shadow-sm">
+                                <li><div><MdPeopleAlt size={30} />Mon compte</div></li>
+                                <li><div><RiRoadMapLine size={30} />Adresses</div></li>
+                                <li className="flex flex-row items-center"><div><ImHistory size={30} />Historique D'achat</div></li>
+                                <li className="flex flex-row items-center"><div><RiLogoutCircleRFill size={30} />Deconnexion</div></li>
+                            </ul>
+                        </div></>) : (
+                        <>
+                            <Link href={"/login"}><MdPeopleAlt className="text-3xl hover:text-yellow-400" /></Link>
+                        </>)}
                     <Link href={""}>  <FaRegHeart className="text-3xl hidden lg:flex hover:text-yellow-400" /></Link>
                     <Link href={""}>  <FiShoppingBag className="text-3xl hover:text-yellow-400" /></Link>
-
-
-
                 </div>
             </nav>
             <div className=" my-5 uppercase hidden lg:flex font-semibold">
