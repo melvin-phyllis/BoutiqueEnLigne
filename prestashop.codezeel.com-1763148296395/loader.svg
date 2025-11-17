@@ -1,0 +1,11 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Darker light full circle -->
+    <circle cx="400" cy="400" r="50" stroke="#bfbfbf" stroke-width="10" fill="none" opacity="0.5"/>
+
+    <!-- Darker spinning segment -->
+    <circle cx="400" cy="400" r="50" stroke="#8c8c8c" stroke-width="10" fill="none"
+        stroke-dasharray="50 250" stroke-dashoffset="0" stroke-linecap="round" opacity="1">
+        <animateTransform attributeName="transform" type="rotate" from="0 400 400" to="360 400 400"
+            dur="1s" repeatCount="indefinite" />
+    </circle>
+</svg>
