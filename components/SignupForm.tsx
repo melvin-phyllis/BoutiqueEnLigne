@@ -1,6 +1,5 @@
 "use client"
 
-
 import SendSiginup from "@/controllers/SendSiginup"
 import { forminputType } from "@/types"
 import Link from "next/link"
@@ -21,10 +20,7 @@ export const SignupForm = () => {
         const { name, value } = e.target
         setForminput(prev => ({
             ...prev, [name]: value
-        }))
-
-
-    }
+        })) }
 
     return (
         <>

@@ -5,7 +5,7 @@ import { NextResponse } from "next/server"
 
 export const PUT = async (req: Request) => {
     try {
-        const { forminput } = await req.json()
+        const forminput = await req.json()
 
         const data = await createUserWithEmailAndPassword(Auth, forminput?.email, forminput?.password)
 
@@ -13,14 +13,14 @@ export const PUT = async (req: Request) => {
 
         await sendEmailVerification(user)
 
-        await axios.post(`${process.env.DATABASE_URL}/users-list.json`, {
+        await axios.put(`${process.env.DATABASE_URL}/users-list/${user?.uid}.json`, {
             id: user?.uid,
             email: user?.email,
             username: forminput?.username
         })
 
         return NextResponse.json({
-            message: "connexion reussi"
+            message: "inscription reussi"
         })
 
     } catch (error: any) {

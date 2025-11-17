@@ -3,12 +3,12 @@ import axios from "axios"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 import { FormEvent, RefObject } from "react"
 
-const SendSiginup = async (e: FormEvent<HTMLFormElement>, forminput: forminputType, route: AppRouterInstance, formRef: RefObject<HTMLFormElement>) => {
+const SendSiginup = async (e: FormEvent<HTMLFormElement>, forminput: forminputType, route: AppRouterInstance, formRef: RefObject<HTMLFormElement | null>) => {
 
     try {
         e?.preventDefault()
 
-        const req = await axios.put("/api/registration", { forminput })
+        const req = await axios.put("/api/registration", forminput )
 
         if (req?.data.error) {
             const error = req?.data.error
@@ -18,7 +18,7 @@ const SendSiginup = async (e: FormEvent<HTMLFormElement>, forminput: forminputTy
 
         }
 
-        if (req?.data.message == "connexion reussi") {
+        if (req?.data.message == "inscription reussi") {
             alert(req?.data?.message);
             route.push("/login")
         }
