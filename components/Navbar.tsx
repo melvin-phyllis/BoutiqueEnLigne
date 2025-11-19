@@ -22,7 +22,7 @@ const Navbar = () => {
     const route = useRouter()
     const [user, setUser] = useState<forminputType>()
 
-    useEffect(() => setUser(GetinfoUser), [])
+    useEffect(() => setUser(GetinfoUser('user')), [])
 
     console.log(user)
     return (
