@@ -3,6 +3,7 @@
 import Footer from "@/components/Footer"
 import Loading from "@/components/Loading"
 import Navbar from "@/components/Navbar"
+import Wishlist from "@/components/Wishlist"
 import Loginmiddleware from "@/controllers/Loginmiddleware"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
@@ -30,6 +31,7 @@ const page = () => {
     if (loading) {
         return <Loading />
     }
+
     return (
         <> <header className="lg:mx-10  p-4">
             <Navbar />
@@ -49,7 +51,7 @@ const page = () => {
                 </section>
 
                 <section className="mx-3  lg:mx-20 p-4 md:p-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 font-serif">
+                    <div className="grid grid-cols-1 md:grid-cols-2 hidden  lg:grid-cols-3 gap-3 font-serif">
                         {accountNav.map((item, index) => (
                             <button key={index} className="border h-35 btn btn-ghost bg-white border-gray-200 flex justify-center flex-col items-center hover:text-yellow-500">
                                 {item?.icon}
@@ -58,7 +60,10 @@ const page = () => {
                         ))}
 
                     </div>
+                    {/* <HistoriqueCommandes /> */}
+                    <Wishlist />
                 </section>
+
             </main>
             <Footer />
         </>

@@ -2,8 +2,10 @@
 "use client"
 
 import GetinfoUser from "@/controllers/GetinfoUser"
+import Logout from "@/controllers/Logout"
 import { forminputType } from "@/types"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { FaRegHeart } from "react-icons/fa"
 import { FiShoppingBag } from "react-icons/fi"
@@ -17,7 +19,7 @@ import BtnNavbar from "./BtnNavbar"
 
 const Navbar = () => {
     const [inputsearch, setInputsearch] = useState(false)
-
+    const route = useRouter()
     const [user, setUser] = useState<forminputType>()
 
     useEffect(() => setUser(GetinfoUser), [])
@@ -72,10 +74,10 @@ const Navbar = () => {
                         <div className="dropdown dropdown-end ">
                             <div tabIndex={0} role="button" className=" cursor-pointer"><MdPeopleAlt className="text-3xl hover:text-yellow-400" /></div>
                             <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-40  p-2 shadow-sm">
-                                <li><div><MdPeopleAlt size={30} />Mon compte</div></li>
+                                <li><Link href={"/account"}><MdPeopleAlt size={30} />Mon compte</Link></li>
                                 <li><div><RiRoadMapLine size={30} />Adresses</div></li>
                                 <li className="flex flex-row items-center"><div><ImHistory size={30} />Historique D'achat</div></li>
-                                <li className="flex flex-row items-center"><div><RiLogoutCircleRFill size={30} />Deconnexion</div></li>
+                                <li className="flex flex-row items-center"><button type="button" onClick={() => Logout(route)}><RiLogoutCircleRFill size={30} />Deconnexion</button></li>
                             </ul>
                         </div></>) : (
                         <>

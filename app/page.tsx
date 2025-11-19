@@ -6,13 +6,17 @@ import FeaturedProducts2 from "@/components/FeaturedProducts2";
 import FeaturedReviews from "@/components/FeaturedReviews";
 import Footer from "@/components/Footer";
 import Latestproducts from "@/components/Latestproducts";
+import Loading from "@/components/Loading";
 import Navbar from "@/components/Navbar";
 import Offerweek from "@/components/Offerweek";
+import { useEffect } from "react";
 import { PiBoatBold } from "react-icons/pi";
 
 
 export default function Home() {
 
+
+  useEffect(()=>{<Loading/>},[])
 
   return (
     <>

@@ -93,6 +93,9 @@ const Footer = () => {
                                     admin@example.com
                                 </Link>
                             </li>
+                            <li>
+                                <Link href={"/login/loginadmin"}>Connexion</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
