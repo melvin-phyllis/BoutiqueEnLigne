@@ -9,12 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@imagekit/next": "^2.1.3",
     "axios": "^1.13.2",
+    "browser-image-compression": "^2.0.2",
     "firebase": "^12.6.0",
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

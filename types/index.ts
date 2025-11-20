@@ -6,6 +6,8 @@ export type forminputType = {
     password?: string;
     confirmpassword?: string
 }
+
+
 export type NavinfoType = {
     id: string;
     img?: string;
@@ -17,4 +19,16 @@ export type NavinfoType = {
     text1: string;
     text2: string;
     text3: string;
+}
+
+
+export type formarticle = {
+    id?:string,
+    key?:string;
+    title: string;
+    Categorie: string;
+    description: string;
+    price: string;
+    stock: number;
+    img: string;
 }

@@ -1,8 +1,8 @@
 "use client"
 
-import Addarticl from "@/components/admin/Addarticl";
 import FilNavgate from "@/components/admin/FilNavgate";
 import { ListeArticle } from "@/components/admin/ListeArticle";
+import Menuarticl from "@/components/admin/Menuarticl";
 import NavbarAdmin from "@/components/admin/NavbarAdmin";
 import { NavinfoType } from "@/types";
 import { useEffect, useState } from "react";
@@ -82,7 +82,7 @@ export default function Home() {
 
 
             {
-              statusnav == "Ajouter produits" ? <Addarticl /> :
+              statusnav == "Ajouter produits" ? <Menuarticl /> :
                 statusnav == "Mes produits" && <ListeArticle />
 
             }
