@@ -7,6 +7,9 @@ import { ChangeEvent, useState } from "react"
 
 
 export const Addarticle = () => {
+
+    const { setProducstList, getProducstList, ProducstList } = useStore()
+
     const [formarticle, setFormarcticle] = useState<formarticle>({
         title: "",
         Categorie: "",
@@ -19,7 +22,17 @@ export const Addarticle = () => {
 
     })
 
-    const { setProducstList, getProducstList, ProducstList } = useStore()
+    const Handlechange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLTextAreaElement>) => {
+
+        const { name, value } = e.target
+        setFormarcticle(prev => ({
+            ...prev, [name]: value
+        }))
+        console.log(formarticle)
+    }
+
+
+
     const [file, setFile] = useState<File | null>(null)
     const [previmg, setPrevimg] = useState<string | null>("")
 
@@ -33,50 +46,10 @@ export const Addarticle = () => {
         }
     }
 
-
-
-    const Sendimg = async () => {
-        try {
-            const response = await fetch("/api/upload-auth")
-            const data = await response.json()
-
-            const { token, expire, signature, publicKey } = data
-
-            if (!file) return ({ message: "choisir une image svp" })
-
-            if (file && file.size > 1024 * 1024) return ({ message: "choisisez une image inferieur a 1MO" })
-
-            const options = {
-                filrType: "image/webp",
-                maxWidthOrHeight: 800,
-                useWebWorker: true,
-            }
-
-            const compressedImg = await imageCompression(file, options)
-
-            const req = await upload({ token, expire, signature, publicKey, file: compressedImg, fileName: `${Date.now}.webp` })
-            console.log(req?.url)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const Handlechange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLTextAreaElement>) => {
-
-        const { name, value } = e.target
-        setFormarcticle(prev => ({
-            ...prev, [name]: value
-        }))
-        console.log(formarticle)
-    }
-
-
-    const [listproduits, setListproduits] = useState<formarticle[]>([])
-
     return (
         <>
 
-            <form className="w-full space-y-4" onSubmit={(e) => Additem(e, formarticle, setProducstList)}>
+            <form className="w-full space-y-4" onSubmit={(e) => Additem(e, formarticle, setProducstList,file)}>
                 <div className="grid gap-4 md:grid-cols-2">
                     <label className="form-control">
                         <span className="label-text mb-1">Nom du produit</span>
@@ -112,7 +85,7 @@ export const Addarticle = () => {
 
                     <label className="form-control">
                         <span className="label-text mb-1">Image </span>
-                        <input type='file' className="input input-bordered" onChange={(e) => HandleChangefile(e)} />
+                        <input type='file' className="input input-bordered" onChange={(e) => HandleChangefile(e)} name="img"  />
                         <img src={previmg!} alt="" />
 
                     </label>
