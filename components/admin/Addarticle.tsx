@@ -1,8 +1,6 @@
 import Additem from "@/controllers/Additem"
 import useStore from "@/store/ProductStore"
 import { formarticle } from "@/types"
-import { upload } from "@imagekit/next"
-import imageCompression from "browser-image-compression"
 import { ChangeEvent, useState } from "react"
 
 
@@ -49,7 +47,7 @@ export const Addarticle = () => {
     return (
         <>
 
-            <form className="w-full space-y-4" onSubmit={(e) => Additem(e, formarticle, setProducstList,file)}>
+            <form className="w-full space-y-4" onSubmit={(e) => Additem(e, formarticle, setProducstList, file)}>
                 <div className="grid gap-4 md:grid-cols-2">
                     <label className="form-control">
                         <span className="label-text mb-1">Nom du produit</span>
@@ -85,8 +83,10 @@ export const Addarticle = () => {
 
                     <label className="form-control">
                         <span className="label-text mb-1">Image </span>
-                        <input type='file' className="input input-bordered" onChange={(e) => HandleChangefile(e)} name="img"  />
-                        <img src={previmg!} alt="" />
+                        <input type='file' className="input input-bordered" onChange={(e) => HandleChangefile(e)} name="img" />
+
+                        {previmg && <img src={previmg} alt="" />}
+
 
                     </label>
 

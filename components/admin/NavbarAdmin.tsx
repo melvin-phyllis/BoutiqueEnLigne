@@ -8,7 +8,7 @@ const NavbarAdmin = ({ Navinfo, setStatusnav }: { Navinfo: NavinfoType[], setSta
         <>
             {Navinfo.map((item, index) => (
 
-                <details key={item.id || index} className="collapse rounded-none   " name="my-accordion-det-1" open={true} >
+                <details key={item.id || index} className="collapse rounded-none   " name="my-accordion-det-1" open={index === 0} >
                     <summary className="collapse-title  hover:bg-gray-200 font-semibold flex-row p-2 flex items-center  gap-2 rounded-xl ">
                         {item.img ? (<img src={item?.img} alt="" className="w-10 h-10 rounded-full" />) : (item.icon)}
 

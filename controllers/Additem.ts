@@ -25,7 +25,7 @@ const Additem = async (e: FormEvent<HTMLFormElement>, formarticle: formarticle, 
             setProducstList({ ...formarticle, id })
 
         }
-        console.log(req.data, "r")
+
 
     } catch (error) {
 
