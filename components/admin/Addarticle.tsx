@@ -1,6 +1,6 @@
 import Additem from "@/controllers/Additem"
 import useStore from "@/store/ProductStore"
-import { formarticle } from "@/types"
+import {  formarticleType } from "@/types"
 import { ChangeEvent, useState } from "react"
 
 
@@ -8,16 +8,14 @@ export const Addarticle = () => {
 
     const { setProducstList, getProducstList, ProducstList } = useStore()
 
-    const [formarticle, setFormarcticle] = useState<formarticle>({
+    const [formarticle, setFormarcticle] = useState<formarticleType>({
         title: "",
         Categorie: "",
         description: "",
         price: "",
         stock: 0,
-        img: ""
-
-
-
+        img: "",
+        status: "private"
     })
 
     const Handlechange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLTextAreaElement>) => {
@@ -80,20 +78,37 @@ export const Addarticle = () => {
                         <span className="label-text mb-1">Stock</span>
                         <input type="number" min="0" className="input input-bordered" placeholder="25" onChange={(e) => Handlechange(e)} name="stock" />
                     </label>
-
-                    <label className="form-control">
-                        <span className="label-text mb-1">Image </span>
-                        <input type='file' className="input input-bordered" onChange={(e) => HandleChangefile(e)} name="img" />
-
-                        {previmg && <img src={previmg} alt="" />}
-
-
-                    </label>
-
                 </div>
 
-                <button type="submit" className="btn btn-neutral w-full">Ajouter le produit</button>
+                <label className="flex flex-col items-center">
+                    <span className="mb-1">Image</span>
+                    <input
+                        type="file"
+                        className="hidden"
+                        id="img-upload"
+                        onChange={(e) => HandleChangefile(e)}
+                        name="img"
+                    />
+                    <label
+                        htmlFor="img-upload"
+                        className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded border border-gray-300 hover:bg-blue-600 transition"
+                    >
+                        Choisir une image
+                    </label>
+                </label>
+
+                <div className="bg-red-100 w-full flex justify-center h-40">
+                    {previmg && <img src={previmg} alt="" />}
+                </div>
+
+                <div className="flex justify-end gap-5">
+                    <button type="submit" className="btn btn-neutral ">Ajouter le produit</button>
+                    <label htmlFor="my_modal_6" className="btn " onClick={() => setPrevimg("")}>Close!</label>
+                </div>
+
+
             </form>
+
         </>
     )
 }

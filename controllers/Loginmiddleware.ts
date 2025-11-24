@@ -22,6 +22,7 @@ const Loginmiddleware = (setLoading: Dispatch<SetStateAction<boolean>>, route: A
                 }
                 return route.push('/login')
             }
+            
             if (path == "/login") {
                 return route.push('/')
             }

@@ -22,7 +22,7 @@ export type NavinfoType = {
 }
 
 
-export type formarticle = {
+export type formarticleType = {
     id?:string,
     key?:string;
     title: string;
@@ -31,4 +31,5 @@ export type formarticle = {
     price: string;
     stock: number;
     img: string;
+    status?:string
 }
