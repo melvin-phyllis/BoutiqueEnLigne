@@ -1,10 +1,10 @@
-import { formarticle } from "@/types"
 import axios from "axios"
 import { FormEvent } from "react"
 import GetinfoUser from "./GetinfoUser"
 import Sendimg from "./Sendimg"
+import { formarticleType } from "@/types"
 
-const Additem = async (e: FormEvent<HTMLFormElement>, formarticle: formarticle, setProducstList: (product: formarticle) => void, file: File | null) => {
+const Additem = async (e: FormEvent<HTMLFormElement>, formarticle: formarticleType, setProducstList: (product: formarticleType) => void, file: File | null) => {
 
     try {
         e?.preventDefault()

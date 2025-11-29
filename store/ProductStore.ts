@@ -1,18 +1,17 @@
-import { formarticle } from '@/types'
-import { set } from 'firebase/database'
+import { formarticleType } from '@/types'
 import { create } from 'zustand'
 
 type Store = {
-    ProducstList: formarticle[],
+    ProducstList: formarticleType[],
 
-    getProducstList: (products: formarticle[]) => void
-    setProducstList: (product: formarticle) => void
+    getProducstList: (products: formarticleType[]) => void
+    setProducstList: (product: formarticleType) => void
 }
 
 const useStore = create<Store>()((set) => ({
     ProducstList: [],
 
-    getProducstList: (products) => set(() => ({ProducstList: products})),
+    getProducstList: (products) => set(() => ({ ProducstList: products })),
 
     setProducstList: (product) => set((state) => ({ ProducstList: [...state.ProducstList, product] })),
 }))

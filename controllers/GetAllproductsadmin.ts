@@ -1,8 +1,8 @@
 import GetinfoUser from "@/controllers/GetinfoUser"
-import { formarticle } from "@/types"
+import { formarticleType } from "@/types"
 import axios from "axios"
 
-const GetAllproductsadmin = async (getProducstList: (products: formarticle[]) => void) => {
+const GetAllproductsadmin = async (getProducstList: (products: formarticleType[]) => void) => {
     try {
         const { id } = GetinfoUser("useradmin")
         const req = await axios.get("/api/getproducts")
@@ -11,7 +11,7 @@ const GetAllproductsadmin = async (getProducstList: (products: formarticle[]) =>
         if (!list) {
             return alert("Ajouter des articles")
         }
-        const Array = list.filter((item: formarticle) => item.key == id)
+        const Array = list.filter((item: formarticleType) => item.key == id)
 
         getProducstList(Array)
     } catch (error) {
